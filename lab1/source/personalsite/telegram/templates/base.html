@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+  <meta charset = "utf-8">
+  <title>{% block title %}{%endblock%} | Vasylyev Dev</title>
+  <link href="{% static "css/base.css" %}" rel="stylesheet">
+  <meta name="viewport" content="width=deivice-width">
+</head>
+<body>
+  {% block header %}
+    {% include "components/white-header.html" %}
+  {% endblock %}
+  {% block main %}
+    {% include "pass-page.html" %}
+  {% endblock %}
+  {% block footer %}
+    {% include "components/footer.html" %}
+  {% endblock %}
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+    // DOM loaded
+      {% block domready %}
+        console.log ("DOM Ready")
+      {% endblock %}
+    })
+</script>`
+</body>
