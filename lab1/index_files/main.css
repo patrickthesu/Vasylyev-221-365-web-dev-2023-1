@@ -1,0 +1,167 @@
+html {
+  --def-family: 'Inter', sans-serif;
+  --def-fsize: 20px;
+  --def-fstyle: normal;
+  --def-fweight: 400;
+  --def-fheight: normal;
+}
+
+.dark-theme {
+  --def-bg: #1F1F1F;
+  --def-color: white;
+}
+.white-theme {
+  --def-bg: white;
+  --def-color: black;
+}
+
+body {
+  color: var(--def-color);
+  background: var(--def-bg);
+  font-family: var(--def-family);
+  font-size: var(--def-fsize);
+  font-style: var(--def-fstyle);
+  font-weight: var(--def-fweight);
+  line-height: var(--def-fheight);
+}
+
+h1 {
+  font-size: 82px;
+  margin: 140px 0;
+}
+
+h2 {
+  font-size: 48px;
+  text-align: center;
+  padding: 80px 0;
+}
+
+h3 {
+  font-size: 40px;
+  padding: 20px;
+}
+
+p {
+  font-size: 25px;
+}
+
+.main-heading {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 200px;
+}
+
+.blue-gradient {
+  background: linear-gradient(91deg, #8A96FF 0%, #FFA5A5 99.7%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.centered-list, .centered-list tr{
+  width: 100%
+}
+
+.centered-list {
+  table-layout: fixed;
+  font-size: 40px;
+}
+
+.centered-list tr td { 
+  text-align: right;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.centered-list tr td:nth-child(2n) { 
+  text-align: left;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: auto;
+}
+
+.soft-skills {
+  text-align: center;
+}
+
+.soft-skills ul li {
+  text-align: center;
+  padding: 25px 0;
+}
+
+.big-list {
+  font-size: 30px;
+}
+
+.small-block-list {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  font-size: 30px;
+}
+
+.small-block-list li {
+  width: 100%;
+  max-width: 630px;
+  height: 120px;
+  padding: 0;
+  margin: 10px;
+  border: 1px solid #FFF;
+  border-radius: 50px;
+}
+
+.small-block-list li a{ 
+  padding: 0 30px;
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.small-block-list li a span{
+  width: 100%;
+  text-align: center;
+}
+
+.big-text {
+  max-width: 1200px;
+  padding: 20px;
+  margin: auto;
+  font-size: 30px;
+}
+.illustration {
+  border-radius: 20px;
+  height: 400px;
+}
+
+header {
+  backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.19);
+  padding: 10px 0;
+}
+
+.header-nav {
+  text-align: center;
+  font-size: 30px;
+}
+
+.header-nav ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+footer {
+  padding: 50px 0 20px 0 ;
+  text-align: center;
+  font-size: 25px
+}
