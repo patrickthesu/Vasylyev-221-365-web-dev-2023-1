@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/styles/reset.css" rel="stylesheet">
+    <link href="../static/styles/main.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <title>Главная</title>
+</head>
+<body id="feedback-page" class="dark-theme">
+    <div class = "centre-container">
+        <div class = "centered glass-block">
+            <h2>Форма обратной связи</h2>
+            <form method="POST" action="#">
+                <a onclick="toFirstPart()" class="no-background hidden" id="go_back_button">Назад</a>
+                <label id="full_name_block">
+                    <h5>ФИО</h5>
+                    <input required type="text" placeholder="Вася Пупкин Федорович" name="full_name">
+                </label>
+                <label id="email_block">
+                    <h5>Адрес электронной почты</h5>
+                    <input required type="text" placeholder="Ваш пароль" name="pass">
+                </label>
+                <div id="source_block">
+                    <h5>Откуда вы узнали нас ?</h5>
+                    <label class="inline small-text">
+                        <input value="1" type="radio" name="pr_source">
+                        Рассказали друзья
+                    </label>
+                    <label class="inline small-text">
+                        <input value="2" type="radio" name="pr_source">
+                        Реклама в интернете
+                    </label>
+                </div>
+                <a class="button" onclick="toSecondPart()" id="next_form_button">Далее</a>
+                <label id="category_block" class="hidden">
+                    <h5>Категория обращения</h5>
+                    <select name = "category">
+                        <option value="1">Предложение</option>
+                        <option value="2">Благодарность</option>
+                        <option value="3">Жалоба</option>
+                    </select>
+                </label>
+                <label id="request_text_block" class="hidden">
+                    <h5>Текст обращения</h5>
+                    <textarea name = "request-text"></textarea>
+                </label>
+                <label id="addition_block" class="hidden">
+                    <h5>Вложение</h5>
+                    <input type="file" name="addition">
+                </label>
+                <label id="trust_personal_data_block" class="small-text hidden">
+                    <input type="checkbox" name="trust_personal_data" required>
+                    Даю согласие на обработку персональных данных
+                </label>
+                <button class="hidden" id="feedback_submit" type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>Кирилл Васильев 2023</p>
+    </footer>
+    <script>
+        const FIRST_FORM_PART = [
+            document.getElementById("full_name_block"),
+            document.getElementById("email_block"),
+            document.getElementById("source_block"),
+            document.getElementById("next_form_button"),
+        ]
+
+        const SECOND_FORM_PART = [
+            document.getElementById("category_block"),
+            document.getElementById("request_text_block"),
+            document.getElementById("addition_block"),
+            document.getElementById("trust_personal_data_block"),
+            document.getElementById("feedback_submit"),
+            document.getElementById("go_back_button"),
+        ]
+
+        function switchFormPart (show_block, hide_block){
+            show_block.map((element)=>element.classList.remove("hidden"))
+            hide_block.map((element)=>element.classList.add("hidden"))
+        }
+
+        function toSecondPart () {
+            switchFormPart(SECOND_FORM_PART, FIRST_FORM_PART)
+        }
+        function toFirstPart () {
+            switchFormPart(FIRST_FORM_PART, SECOND_FORM_PART)
+        }
+
+    </script>
+</body>
+</html>

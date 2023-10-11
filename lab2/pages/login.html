@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/styles/reset.css" rel="stylesheet">
+    <link href="../static/styles/main.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <title>Вход</title>
+</head>
+<body id="login-page" class="dark-theme">
+    <div class = "centre-container">
+        <div class = "centered glass-block">
+            <h2>Вход в систему</h2>
+            <form method="POST" action="#">
+                <label>
+                    Логин
+                    <input required type="text" placeholder="Логин" name="login">
+                </label>
+                <label>
+                    Пароль
+                    <input required type="password" placeholder="Ваш пароль" name="pass">
+                </label>
+                <label class="small-text">
+                    <input type="checkbox" name="rememberMe">
+                    Запомнить меня
+                </label>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>Кирилл Васильев 2023</p>
+    </footer>
+</body>
+</html>
