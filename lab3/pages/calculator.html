@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/styles/reset.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <title>Vasylyev Dev</title>
+</head>
+<body class = "dark-theme">
+    <main>
+        <section class = "hero-block centre-container">
+            <div class = "container">
+                <div class = "hero-flex">
+                    <div>
+                        <h1 class = "hero-heading">Калькулятор стоимости телеграмм бота</h1>
+                        <a class="button" href = "#">Расчитать</a>
+                    </div>
+                    <img src="../static/images/cassa.png" alt = "Телеграмм бот">
+                </div>
+            </div>
+        </section>
+        <section class="">
+            <div class="container">
+              <div>
+                <h3>Наличие базы данных</h3>
+                <label>
+                  <input type="radio" id="have_db" name="have_db" value="Да" checked/>
+                  Да
+                </label>
+                <label>
+                  <input type="radio" id="have_no_db" name="have_db" value="Нет"/>
+                  Нет
+                </label>
+                <h3>Работа с сервисами</h3>
+                <label>
+                  <input id="gsheets_service" type="checkbox"/>
+                  <img src="../static/images/sheets.png" alt="Google sheets"/>
+                </label>
+                <label>
+                  <input id="gforms_service" type="checkbox"/>
+                  <img src="../static/images/forms.png" alt="Google forms"/>
+                </label>
+                <label>
+                  <input id="gdrive_service" type="checkbox"/>
+                  <img src="../static/images/drive.png" alt="Google drive"/>
+                </label>
+                <h3>Работа с телеграмм</h3>
+                <label>
+                  <input id="groups_manage" type="checkbox"/>
+                  <img src="../static/images/sheets.png" alt="Grops manage"/>
+                  Управление групами
+                </label>
+                <label>
+                  <input id="chanel_manage" type="checkbox"/>
+                  <img src="../static/images/sheets.png" alt="Chanels manage"/>
+                  Управление каналами
+                </label>
+                <label>
+                  <input id="money_manage" type="checkbox"/>
+                  <img src="../static/images/sheets.png" alt="Money manage"/>
+                  Управление оплатой
+                </label>
+                <label>
+                Взаимодействие с клиентом
+                <input id="communicationInput" type="range" min="0" max="3" value="0" step="1" /> 
+                <datalist id="communicationValues">
+                  <option value="0" label="Нет"></option>
+                  <option value="1" label="Минимальное"></option>
+                  <option value="2" label="Много"></option>
+                  <option value="3" label="Много на разных языках"></option>
+                </datalist>
+                </label>
+                <p>Значение: <output id="communicationValue"><output></p>
+              </div>
+              <p>Примерная стоимость: <span id = "amount"></span></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Васильев Кирилл 2023</p>
+    </footer>
+</body>
+<link href="../static/styles/main.css" rel="stylesheet">
+<script>
+const communicationValue = document.querySelector("#communicationValue");
+const communicationInput = document.querySelector("#communicationInput");
+
+communicationValue.textContent = communicationInput.value;
+communicationInput.addEventListener("input", (event) => {
+  communicationValue.textContent = event.target.value;
+});
+</script>
+</html>
