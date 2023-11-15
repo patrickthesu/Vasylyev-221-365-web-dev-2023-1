@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/styles/reset.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <title>Vasylyev Dev</title>
+</head>
+<body class = "white-theme">
+    <div class = "centre-container">
+        <div class = "centered glass-block">
+            <h2>Заказать бота</h2>
+            <form method="POST" action="https://httpbin.org/post">
+                <label id="full_name_block">
+                    <h5>Имя</h5>
+                    <input required type="text" placeholder="Вася Пупкин" name="full_name">
+                </label>
+                <label id="email_block">
+                    <h5>Адрес электронной почты</h5>
+                    <input required type="email" placeholder="example@example.com" name="email">
+                </label>
+                <label id="contacts_block">
+                    <h5>Телефон или любой удобный мессенджер</h5>
+                    <input required type="text" placeholder="+7(999)999-99-99" name="pass">
+                </label>
+                <label id="description_block">
+                    <h5>Несколько слов о боте и примерный бюджет</h5>
+                    <input required type="text" placeholder="Бот для подсчет затрат 10000 руб" name="pass">
+                </label>
+                <label id="addition_block">
+                    <h5>Приложить файлы (до 10 Мб.)</h5>
+                    <input type="file" name="addition">
+                </label>
+                <button id="feedback_submit" type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>Васильев Кирилл 2023</p>
+    </footer>
+</body>
+<link href="../static/styles/main.css" rel="stylesheet">
+</html>
