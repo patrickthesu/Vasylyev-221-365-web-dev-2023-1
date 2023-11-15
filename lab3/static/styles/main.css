@@ -294,3 +294,20 @@ footer {
 section {
   padding: 20px 0;
 }
+
+.icon {
+  height: 48px;
+}
+
+.flex-fieldset {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+input {
+  max-width: 800px;
+}
