@@ -311,3 +311,14 @@ section {
 input {
   max-width: 800px;
 }
+
+#calculator {
+  text-align: center;
+}
+
+.blue-gradient {
+  background: linear-gradient(91deg, #8A96FF 0%, #FFA5A5 99.7%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
