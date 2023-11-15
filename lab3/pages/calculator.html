@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../static/styles/reset.css" rel="stylesheet">
-    
+    <link href="../static/styles/main.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
     <title>Vasylyev Dev</title>
@@ -28,43 +28,43 @@
                 <h3>Наличие базы данных</h3>
                 <fieldset class="flex-fieldset">
                 <label>
-                  <input type="radio" id="have_db" name="have_db" value="Да" checked/>
+                  <input type="radio" id="have_db" name="have_db" value="Да" checked>
                   Да
                 </label>
                 <label>
-                  <input type="radio" id="have_no_db" name="have_db" value="Нет"/>
+                  <input type="radio" id="have_no_db" name="have_db" value="Нет">
                   Нет
                 </label>
                 </fieldset>
                 <h3>Работа с сервисами</h3>
                 <fieldset class="flex-fieldset">
                 <label>
-                  <input id="gsheets_service" type="checkbox"/>
+                  <input id="gsheets_service" type="checkbox">
                   <img class="icon" src="../static/images/sheets.png" alt="Google sheets"/>
                 </label>
                 <label>
-                  <input id="gforms_service" type="checkbox"/>
+                  <input id="gforms_service" type="checkbox">
                   <img class="icon" src="../static/images/forms.png" alt="Google forms"/>
                 </label>
                 <label>
-                  <input id="gdrive_service" type="checkbox"/>
-                  <img class="icon" src="../static/images/drive.png" clas="icon" alt="Google drive"/>
+                  <input id="gdrive_service" type="checkbox">
+                  <img class="icon" src="../static/images/drive.png" alt="Google drive"/>
                 </label>
                 </fieldset>
                 <h3>Работа с телеграмм</h3>
                 <fieldset class="flex-fieldset">
                 <label>
-                  <input id="groups_manage" type="checkbox"/>
+                  <input id="groups_manage" type="checkbox">
                   <img src="../static/images/group.png" class="icon" alt="Grops manage"/>
                   Управление групами
                 </label>
                 <label>
-                  <input id="chanel_manage" type="checkbox"/>
+                  <input id="chanel_manage" type="checkbox">
                   <img src="../static/images/chanel.png" class="icon" alt="Chanels manage"/>
                   Управление каналами
                 </label>
                 <label>
-                  <input id="money_manage" type="checkbox"/>
+                  <input id="money_manage" type="checkbox">
                   <img src="../static/images/money.png" class="icon" alt="Money manage"/>
                   Управление оплатой
                 </label>
@@ -82,7 +82,6 @@
         <p>Васильев Кирилл 2023</p>
     </footer>
 </body>
-<link href="../static/styles/main.css" rel="stylesheet">
 <script>
 // GETTTING ALL INPUTS
 //
@@ -151,7 +150,6 @@ inputs.map(input => {
   amount.textContent = getCurrent();
 });
 })
-
 
 </script>
 </html>
