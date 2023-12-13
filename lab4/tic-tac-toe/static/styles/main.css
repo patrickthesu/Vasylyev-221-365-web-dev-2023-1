@@ -11,10 +11,12 @@
 .dark-theme {
   --def-bg: #1F1F1F;
   --def-color: white;
+  --contrast-color: black;
 }
 .white-theme {
   --def-bg: white;
   --def-color: black;
+  --contrast-color: white;
 }
 
 body {
@@ -34,12 +36,12 @@ body {
 }
 
 h1 {
-  font-size: 82px;
+  font-size: 64px;
   margin: 20px 0;
 }
 
 h2 {
-  font-size: 64px;
+  font-size: 48px;
   padding-bottom: 30px;
 }
 
@@ -189,38 +191,21 @@ footer {
   justify-content: center;
 }
 
-.hero-flex div, .hero-flex img{
-  height: 600px;
-}
-
-.hero-flex div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 45px;
-}
-
 .inline {
   display: inline-block;
 }
 
-.hiden {
-  display: none;
-}
-
-.field {
-    display: flex;
-    flex-wrap: wrap;
-    width: 600px;
-    height: 600px;
-    border: red 2px solid;
-    margin: 0 auto;
-}
-
 .popup-wrapper {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--contrast-color);
+
 	height: 100vh;
-	display: flex;
-	align-items: center;
+  width: 100%;
 }
 
 .popup{
@@ -233,14 +218,21 @@ footer {
 		height: max-content;
 		position: relative;
 
-		background: var(--white);
-
 		overflow: auto;
 
 		padding-top: 1em;
 		text-align: center;
 }
 
+
+.field {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
+    border: red 2px solid;
+    margin: 0 auto;
+}
 .cell {
     box-sizing: border-box;
     border: red 1px solid;
@@ -248,26 +240,20 @@ footer {
     height: 200px;
     font-size: 196px;
 }
-#start {
-    margin: 10px 0;
-    padding: 5px;
-}
-#notification {
-    position: absolute;
-    text-align: center;
-    margin: 0 auto;
-    background: gray;
-    width: 600px;
-    height: 200px;
-    box-sizing: border-box;
-}
+
 .win {
-    background-color: lightgreen;
+  background: linear-gradient(180deg, var(--contrast-color) 0%, rgb(30, 120, 30) 99.7%);
 }
+
 .draw {
-    background-color: rgb(160, 167, 123);
+  background: linear-gradient(180deg, var(--contrast-color) 0%, rgb(120, 120, 120) 99.7%);
 }
+
 .lose {
     background-color: rgb(173, 0, 0);
-    color:white;
+    color: white;
+}
+
+.hiden {
+  display: none;
 }

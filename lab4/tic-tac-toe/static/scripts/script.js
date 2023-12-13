@@ -1,42 +1,86 @@
 "use strict";
 
-const game = document.querySelector(".game");
-const newGameBtn = document.querySelector("#start");
-
 let step = true;
 let count = 0;
 let win = false;
+
+const body = document.querySelector('body');
+const popup = document.getElementById('popup-wrapper');
+const field = document.querySelector('.field');
+const menu = document.getElementById('menu');
+const notification = document.getElementById('notification');
+
+const notificationNextButton = document.getElementById("continue");
+const changeThemeButton = document.getElementById('change-theme');
+const newGameButton = document.getElementById('start-game');
+
+
+function hidePopoup() {
+    console.log('hiding popup');
+    popup.classList.add('hiden');
+}
+function showPopoup() {
+    popup.classList.remove('hiden');
+}
+
+function setDarkTheme() {
+    body.classList.add('dark-theme');
+    body.classList.remove('white-theme');
+}
+
+function setWhiteTheme() {
+    body.classList.add('white-theme');
+    body.classList.remove('dark-theme');
+}
+
+function changeTheme() { 
+    body.classList.contains('white-theme') ? setDarkTheme() : setWhiteTheme();
+}
 
 function addElems() {
     for (let i = 0; i < 9; i++) {
         let cell = document.createElement("div");
         cell.classList.add("cell");
-        game.append(cell);
+        field.append(cell);
     }
 }
-function showNontification(message, type) {
-    const notification = document.getElementById('notification');
+
+function showNotification(message, className) {
+    showPopoup();
+    popup.classList.add(className);
+    notification.classList.remove('hiden');
     notification.textContent = message;
-    notification.className = type;
+    notificationNextButton.classList.remove('hiden');
+    menu.classList.add('hiden');
 }
 
+function showNotificationNext() {
+    popup.classList.remove('win');
+    popup.classList.remove('lose');
+    popup.classList.remove('draw'); 
+    menu.classList.remove('hiden');
+    notificationNextButton.classList.add('hiden');
+    notification.classList.add('hiden');
+}
 
 function winable() {
     const items = document.querySelectorAll('.cell');
     for (let i = 0; i < 3; i++) {
         let counter = 0;
         for (let j = 0; j < 2; j++) {
-            if (items[i * 3 + j].textContent 
-                === items[i * 3 + j + 1].textContent
-                && items[i * 3 + j].textContent !== '') {
+            if (items[i * 3 + j].textContent === 
+                items[i * 3 + j + 1].textContent && 
+                items[i * 3 + j].textContent !== ''
+            ) {
                 counter++;
             }
         }
         if (counter === 2) {
             win = true;
-            shownotification(!step 
-                ? ('Победили Х', 'win') 
-                : ('Победили О', 'win'));
+            showNotification((!step 
+                ? 'Победили крестики'
+                : 'Победили нолики'), 'win'
+            );
             return;
         }
     }
@@ -55,7 +99,10 @@ function diagonalMainChecked() {
     }
     if (count == 2) {
         win = true;
-        shownotification(!step ? ('Победили Х', 'win') : ('Победили О', 'win'));
+        showNotification((!step ? 
+            'Победили крестики' : 
+            'Победили нолики'), 'win'
+        );
     }
 }
 
@@ -72,35 +119,22 @@ function diagonalSecondChecked() {
     }
     if (count == 2) {
         win = true;
-        shownotification(!step ? ('Победили Х', 'win') : ('Победили О', 'win'));
+        showNotification((!step ? 
+            'Победили крестики' : 
+            'Победили нолики'), 'win'
+        );
     }
 }
 
 function notwin() {
-    const items = document.querySelector('.cell');
+    const items = document.querySelectorAll('.cell');
     for (let i = 0; i < items.length; i++) {
         if (items[i].textContent === '') {
             return false;
-        }     
+        }
     }
     return true;
 }
-
-// function verticalWin () {
-//     const items = document.querySelectorAll('.cell');
-
-//     for (let i = 0; i < 3; i++) {
-//         let xcount = 0;
-//         let ocount = 0;
-//         for (let j = 0; j < 2; j++) {
-//             if (items[j * 3 + i].textContent === 'X') xcount++;
-//             else if (items[j * 3 + i].textContent === 'O') ocount++;
-//             else return false;
-//         }
-//         if (ocount === 2 && xcount == 2) return true;
-//         return false;
-//     }
-// }
 
 function verticalWin() {
     const items = document.querySelectorAll('.cell');
@@ -115,9 +149,9 @@ function verticalWin() {
         }
         if (counter === 2) {
             win = true;
-            shownotification(!step 
-                ? ('Победили Х', 'win') 
-                : ('Победили О', 'win'));
+            showNotification((!step 
+                ? 'Победили крестики'
+                : 'Победили нолики'), 'win');
             return;
         }
     }
@@ -125,14 +159,6 @@ function verticalWin() {
 
 function clicked(event) {
     const target = event.target;
-    if (win) {
-        shownotification('Игра окончена. Начните заново', 'lose');
-        return;
-    }
-    if (notwin()) {
-        shownotification('Ничья', 'draw');
-        return;
-    } 
     if (target.textContent !== '') {
         return;
     }
@@ -143,6 +169,14 @@ function clicked(event) {
         step = true;
         target.textContent = 'O';
     }
+    if (win) {
+        showNotification('Игра окончена. Начните заново', 'lose');
+        return;
+    }
+    if (notwin()) {
+        showNotification('Ничья', 'draw');
+        return;
+    } 
     count++;
     winable();
     diagonalMainChecked();
@@ -150,17 +184,9 @@ function clicked(event) {
     verticalWin();
 }
 
-function notwin() {
-    const items = document.querySelectorAll('.cell');
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].textContent === '') {
-            return false;
-        }     
-    }
-    return true;
-}
 
 function cleanGameField() {
+    hidePopoup();
     const items = document.querySelectorAll('.cell');
     for (let i = 0; i < items.length; i++) {
         items[i].textContent = '';
@@ -170,6 +196,9 @@ function cleanGameField() {
     win = false;
 }
 
-game.addEventListener('click', clicked);
-newGameBtn.addEventListener('click', cleanGameField);
+field.addEventListener('click', clicked);
+newGameButton.addEventListener('click', cleanGameField);
+changeThemeButton.onclick = changeTheme;
+notificationNextButton.onclick = showNotificationNext;
+
 window.onload = addElems;

@@ -6,31 +6,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 
-    <link rel="stylesheet" href="./static/styles/main.css">
     <link rel="stylesheet" href="static/styles/reset.css">
+    <link rel="stylesheet" href="./static/styles/main.css">
     <title>Крестики нолики</title>
 </head>
 <body class="dark-theme">
-  <header class="white-header">
-    <nav class="header-nav">
-      <ul>
-        <li><a href="./pages/rules.html">Правила игры</a></li>
-        <li><a href="./pages/contacts.html">Обо мне</a></li>
-      </ul>
-    </nav>
-  </header>
-  <div id class="popup-wrapper hiden">
-    <div id="popup">
-      <div class="menu">
-        <h1>Главное меню</h1>
-        <button id="start-game">Начать игру</button> 
-        <button id="change-theme">Поменять тему</button> 
+  <div id="popup-wrapper" class="popup-wrapper">
+    <div>
+      <h2 id="notification" class="hiden"></h2>
+      <button id="continue" class="pretty-link hiden">Продолжить</button> 
+      <div id="menu" class="menu">
+        <h2>Главное меню</h2>
+        <button id="start-game" class="pretty-link">Начать игру</button> 
+        <button id="change-theme" class="pretty-link">Поменять тему</button> 
       </div>
     </div>
   </div>
   <div class="centre-container">
     <div class="field"></div>
   </div>
-  <script src="script.js"></script>
+  <script src="./static/scripts/script.js"></script>
 </body>
 </html>
