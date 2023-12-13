@@ -1,0 +1,100 @@
+:root {
+    --def-family: 'Inter', sans-serif;
+    --def-fsize: 20px;
+    --def-fstyle: normal;
+    --def-fweight: 400;
+    --def-fheight: normal;
+    height: 100%;
+    width: 100%;
+}
+
+.dark-theme {
+    --def-bg: #1F1F1F;
+    --def-color: white;
+}
+.white-theme {
+    --def-bg: white;
+    --def-color: black;
+}
+
+body {
+    color: var(--def-color);
+    background: var(--def-bg);
+    font-family: var(--def-family);
+    font-size: var(--def-fsize);
+    font-style: var(--def-fstyle);
+    font-weight: var(--def-fweight);
+    line-height: var(--def-fheight);
+    height: 100%;
+    width: 100%;
+}
+
+button, .button {
+    font-size: 30px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cecece;
+    text-align: center;
+    color: #1F1F1F;
+}
+button:hover, .button:hover {
+    background: #aaa;
+    text-decoration: none;
+}
+
+p {
+    font-size: 30px;
+}
+
+footer {
+    padding: 30px 0 30px 0 ;
+    text-align: center;
+    font-size: 25px;
+    background-color: #000;
+    color: white;
+}
+
+
+.glass-block {
+    background: radial-gradient(107.32% 141.42% at 0% 0%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%);
+    box-shadow: -5px -5px 250px 0px rgba(255, 255, 255, 0.02) inset;
+    backdrop-filter: blur(21px);
+    border: 1px solid #FFF;
+}
+
+.centre-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+}
+
+.digits {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.other {
+    display: flex;
+    flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.other .key{
+    flex: 1 0 50%;
+}
+
+.digit {
+    flex: 1 0 30%;
+}
+
+.hiden {
+  display: none;
+}
