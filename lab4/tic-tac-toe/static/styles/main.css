@@ -31,92 +31,13 @@ body {
   width: 100%;
 }
 
-.small-text {
-  font-size: 22px;
-}
-
-h1 {
-  font-size: 64px;
-  margin: 20px 0;
-}
-
 h2 {
   font-size: 48px;
   padding-bottom: 30px;
 }
 
-h3 {
-  font-size: 30px;
-  text-align: center;
-  padding: 10px 0;
-}
-
-h5 {
-  font-size: 30px;
-}
-
-label {
-  font-size: 30px;
-}
-
-label {
-  font-size: 30px;
-  padding: 20px 0;
-  display: block;
-}
-
-a{
-  cursor: pointer;
-  font-size: 30px;
-  text-align: center;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-input, select, textarea {
-  max-width: 100%;
-  max-height: 400px;
-  background: none;
-  width: 100%;
-  font-size: 30px;
-  margin: 5px 0;
-}
-
-textarea {
-  min-width: 100%;
-  min-height: 50px;
-}
-
-textarea, select {
-  border: 1px solid #cecece ;
-  border-radius: 10px;
-}
-
 p {
   font-size: 30px;
-}
-
-input{
-  background: none;
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0,.1);
-  outline: none;
-}
-
-input[type='radio'],
-input[type='checkbox']{
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  margin: auto 5px;
-}
-
-input[type='file']{
-  border: none;
 }
 
 button, .button {
@@ -151,25 +72,6 @@ button:hover, .button:hover {
   text-decoration: underline;
 }
 
-header {
-  backdrop-filter: blur(5px);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.19);
-  padding: 10px 0;
-}
-
-.header-nav {
-  text-align: center;
-  font-size: 30px;
-}
-
-.header-nav ul li {
-  display: inline-block;
-  padding: 10px;
-}
-
 footer {
   padding: 30px 0 30px 0 ;
   text-align: center;
@@ -178,21 +80,12 @@ footer {
   color: white;
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
-
 .centre-container {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.inline {
-  display: inline-block;
 }
 
 .popup-wrapper {
@@ -209,19 +102,19 @@ footer {
 }
 
 .popup{
-		max-width: 500px;
-		width: 90%;
-		max-height: 90vh;
+    max-width: 500px;
+	width: 90%;
+	max-height: 90vh;
 
-		border-radius: 2.4rem;
-		margin: 0 auto;
-		height: max-content;
-		position: relative;
+	border-radius: 2.4rem;
+	margin: 0 auto;
+	height: max-content;
+	position: relative;
 
-		overflow: auto;
+	overflow: auto;
 
-		padding-top: 1em;
-		text-align: center;
+	padding-top: 1em;
+	text-align: center;
 }
 
 
@@ -242,16 +135,11 @@ footer {
 }
 
 .win {
-  background: linear-gradient(180deg, var(--contrast-color) 0%, rgb(30, 120, 30) 99.7%);
+    background: linear-gradient(180deg, var(--contrast-color) 0%, rgb(30, 120, 30) 99.7%);
 }
 
 .draw {
-  background: linear-gradient(180deg, var(--contrast-color) 0%, rgb(120, 120, 120) 99.7%);
-}
-
-.lose {
-    background-color: rgb(173, 0, 0);
-    color: white;
+    background: linear-gradient(180deg, var(--contrast-color) 0%, rgb(120, 120, 120) 99.7%);
 }
 
 .hiden {
