@@ -1,37 +1,17 @@
-:root {
-    --def-family: 'Inter', sans-serif;
-    --def-fsize: 20px;
-    --def-fstyle: normal;
-    --def-fweight: 400;
-    --def-fheight: normal;
-    height: 100%;
-    width: 100%;
-}
-
-.dark-theme {
-    --def-bg: #1F1F1F;
-    --def-color: white;
-}
-.white-theme {
-    --def-bg: white;
-    --def-color: black;
-}
-
-body {
-    color: var(--def-color);
-    background: var(--def-bg);
-    font-family: var(--def-family);
-    font-size: var(--def-fsize);
-    font-style: var(--def-fstyle);
-    font-weight: var(--def-fweight);
-    line-height: var(--def-fheight);
+body, html {
+    color: white;
+    background: #1F1F1F;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     height: 100%;
     width: 100%;
 }
 
 button, .button {
     font-size: 30px;
-    padding: 10px;
     border: none;
     border-radius: 5px;
     background: #cecece;
@@ -57,10 +37,10 @@ footer {
 
 
 .glass-block {
-    background: radial-gradient(107.32% 141.42% at 0% 0%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%);
-    box-shadow: -5px -5px 250px 0px rgba(255, 255, 255, 0.02) inset;
-    backdrop-filter: blur(21px);
-    border: 1px solid #FFF;
+    background-color: #17181A;
+    padding: 40px;
+    border-radius: 30px;
+    max-width: 400px
 }
 
 .centre-container {
@@ -73,22 +53,46 @@ footer {
 
 .buttons {
     display: flex;
+    gap: 5px
 }
 
-.digits {
-	display: flex;
+.digits, .other{
+    display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
+    gap: 5px;
 }
 
-.other {
-    display: flex;
-    flex-wrap: wrap;
-	flex-direction: row;
+.digit {
+    color: #29A8FF;
+    background: #303136;
 }
+
+.screen {
+    height: 60px;
+    text-align: right;
+    font-size: 28px;
+}
+
+.result {
+    background-color: #1991FF;
+    color: #B2DAFF;
+}
+
+.clear {
+    background-color: #616161;
+    color: #A5A5A5;
+}
+
+.operation, .bracket {
+   background-color: #005DB2; 
+   color: #339DFF;
+}
+
 
 .other .key{
-    flex: 1 0 50%;
+    flex: 1 0 40%;
+    box-sizing: border-box;
 }
 
 .digit {

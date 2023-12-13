@@ -36,6 +36,12 @@ h2 {
   padding-bottom: 30px;
 }
 
+h3 {
+    font-size: 30px;
+    text-align: center;
+    padding: 10px 0;
+  }
+
 p {
   font-size: 30px;
 }

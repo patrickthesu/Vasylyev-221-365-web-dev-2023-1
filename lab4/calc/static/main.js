@@ -1,3 +1,5 @@
+const screen = document.querySelector('.screen span');
+
 // Функция priority позволяет получить 
 // значение приоритета для оператора.
 // Возможные операторы: +, -, *, /.
@@ -70,7 +72,11 @@ function compile(str) {
         if (isNumeric(token)) {
             out.push(token);
         } else if (isOperation(token)) {
-            while (stack.length > 0 && isOperation(stack[stack.length - 1]) && priority(stack[stack.length - 1]) >= priority(token)) {
+            while (
+                stack.length > 0 &&
+                isOperation(stack[stack.length - 1]) && 
+                priority(stack[stack.length - 1]) >= priority(token)
+            ) {
                 out.push(stack.pop());
             }
             stack.push(token);
@@ -89,38 +95,73 @@ function compile(str) {
     return out.join(' ');
 }
 
-// Функция evaluate принимает один аргумент -- строку 
-// с арифметическим выражением, записанным в обратной 
-// польской нотации. Возвращаемое значение -- результат 
-// вычисления выражения. Выражение может включать 
-// действительные числа и операторы +, -, *, /.
-// Вам нужно реализовать эту функцию
-// (https://ru.wikipedia.org/wiki/Обратная_польская_запись#Вычисления_на_стеке).
+function performOperation(a, b, operator) {
+    switch (operator) {
+    case '+':
+        return a + b;
+    case '-':
+        return a - b;
+    case '*':
+        return a * b;
+    case '/':
+        if (b == 0) return 'Деление на ноль';
+        return a / b;
+    default:
+        return 'Неизвестная операция';
+    }
+}
 
 function evaluate(str) {
-    // your code here
+    let stack = [];
+
+    let tokens = str.split(' ');
+
+    for (token of tokens) {
+        if (isNumeric(token)) {
+            stack.push(parseFloat(token));
+        } else if (isOperation(token)) {
+            let operand2 = stack.pop();
+            let operand1 = stack.pop();
+            let result = performOperation(operand1, operand2, token);
+            if (!isNumeric(result)) return result;
+            stack.push(result);
+        }
+    }
+
+    return stack.pop();
 }
 
-// Функция clickHandler предназначена для обработки 
-// событий клика по кнопкам калькулятора. 
-// По нажатию на кнопки с классами digit, operation и bracket
-// на экране (элемент с классом screen) должны появляться 
-// соответствующие нажатой кнопке символы.
-// По нажатию на кнопку с классом clear содержимое экрана 
-// должно очищаться.
-// По нажатию на кнопку с классом result на экране 
-// должен появиться результат вычисления введённого выражения 
-// с точностью до двух знаков после десятичного разделителя (точки).
-// Реализуйте эту функцию. Воспользуйтесь механизмом делегирования 
-// событий (https://learn.javascript.ru/event-delegation), чтобы 
-// не назначать обработчик для каждой кнопки в отдельности.
+function clickHandler(event) { 
+    if (screen.textContent === 'Деление на ноль' || 
+        screen.textContent === 'Неизвестная операция') {
+        screen.textContent = '';
+    }
 
-function clickHandler(event) {
-    // your code here
+    if (isDigit(event.target.textContent) ||
+        /^[\(\)]{1}$/.test(event.target.textContent)
+    ) {
+        screen.textContent += event.target.textContent;
+    } else if (event.target.textContent === '.' ||
+        isOperation(event.target.textContent)
+    ) {
+        if ((screen.textContent.slice(-1) !== '.' &&
+            !isOperation(screen.textContent.slice(-1))) &&
+            screen.textContent !== ''
+        ) {
+            screen.textContent += event.target.textContent;
+        }
+    } else if (event.target.textContent === 'C') {
+        screen.textContent = '';
+    } else if (event.target.textContent === '=') {
+        let result = evaluate(compile(screen.textContent));
+        result = isNumeric(result) ? result.toFixed(2) : result;
+        screen.textContent = result;
+    }
 }
 
 
-// Назначьте нужные обработчики событий.
 window.onload = function () {
-    // your code here
-}
+    document.querySelector(
+        '.buttons'
+    ).addEventListener('click', clickHandler);
+};
