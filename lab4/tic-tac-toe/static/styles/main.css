@@ -1,0 +1,147 @@
+:root {
+  --def-family: 'Inter', sans-serif;
+  --def-fsize: 20px;
+  --def-fstyle: normal;
+  --def-fweight: 400;
+  --def-fheight: normal;
+  height: 100%;
+  width: 100%;
+}
+
+.dark-theme {
+  --def-bg: #1F1F1F;
+  --def-color: white;
+  --contrast-color: black;
+}
+.white-theme {
+  --def-bg: white;
+  --def-color: black;
+  --contrast-color: white;
+}
+
+body {
+  color: var(--def-color);
+  background: var(--def-bg);
+  font-family: var(--def-family);
+  font-size: var(--def-fsize);
+  font-style: var(--def-fstyle);
+  font-weight: var(--def-fweight);
+  line-height: var(--def-fheight);
+  height: 100%;
+  width: 100%;
+}
+
+h2 {
+  font-size: 48px;
+  padding-bottom: 30px;
+}
+
+p {
+  font-size: 30px;
+}
+
+button, .button {
+  width: 100%;
+  font-size: 30px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 15px;
+  background: #cecece;
+  display: block;
+  text-align: center;
+  color: #1F1F1F;
+}
+
+button:hover, .button:hover {
+  background: #aaa;
+  text-decoration: none;
+}
+
+.pretty-link {
+  background: linear-gradient(91deg, #ffc0ef 0%, #ffc6c6 99.7%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pretty-link:hover {
+  background: #fcd6d6;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: underline;
+}
+
+footer {
+  padding: 30px 0 30px 0 ;
+  text-align: center;
+  font-size: 25px;
+  background-color: #000;
+  color: white;
+}
+
+.centre-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-wrapper {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--contrast-color);
+
+	height: 100vh;
+  width: 100%;
+}
+
+.popup{
+    max-width: 500px;
+	width: 90%;
+	max-height: 90vh;
+
+	border-radius: 2.4rem;
+	margin: 0 auto;
+	height: max-content;
+	position: relative;
+
+	overflow: auto;
+
+	padding-top: 1em;
+	text-align: center;
+}
+
+
+.field {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
+    border: red 2px solid;
+    margin: 0 auto;
+}
+.cell {
+    box-sizing: border-box;
+    border: red 1px solid;
+    width: 200px;
+    height: 200px;
+    font-size: 196px;
+}
+
+.win {
+    background: linear-gradient(180deg, var(--contrast-color) 0%, rgb(30, 120, 30) 99.7%);
+}
+
+.draw {
+    background: linear-gradient(180deg, var(--contrast-color) 0%, rgb(120, 120, 120) 99.7%);
+}
+
+.hiden {
+  display: none;
+}
