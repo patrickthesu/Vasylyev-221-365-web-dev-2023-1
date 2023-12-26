@@ -94,10 +94,14 @@ function renderPaginationElement(info) {
     paginationContainer.append(btn);
 }
 
-function downloadData(page = 1, query = null) {
-    let factsList = document.querySelector('.facts-list');
-    let url = new URL(factsList.dataset.url);
-    let perPage = document.querySelector('.per-page-btn').value;
+function downloadData(page = 1) {
+    let query = '';
+    const searchField = document.querySelector('.search-field');
+    searchField.value = searchField.value.trim();
+    query = searchField.value === '' ? null : searchField.value
+    const factsList = document.querySelector('.facts-list');
+    const url = new URL(factsList.dataset.url);
+    const perPage = document.querySelector('.per-page-btn').value;
     url.searchParams.append('page', page);
     url.searchParams.append('per-page', perPage);
     query ? url.searchParams.append('q', query) : query;
@@ -123,11 +127,8 @@ function pageBtnHandler(event) {
     }
 }
 
-function search () {
-    const searchField = document.querySelector('.search-field');
-    searchField.value = searchField.value.trim();
-    if (searchField.value === '') return downloadData(page = 1);
-    downloadData(page = 1, query = searchField.value);
+function search () { 
+    downloadData(page = 1,);
     window.scrollTo(0, 0);
 }
 
