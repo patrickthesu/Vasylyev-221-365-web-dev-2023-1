@@ -3,12 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Fungi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -54,7 +51,7 @@
                 <a href="#feedback" class="btn btn-dark">Написать нам</a>
               </div>
               <div class="col-md-6 text-center">
-                <img class="w-100" src="images/overwiev.png">
+                <img class="w-100" src="images/overwiev.png" alt="Overwiev">
               </div>
             </div>
           </div>
@@ -81,13 +78,13 @@
             </div>
             <div class="row">
                   <div class="col-md-6 col-lg-3 p-0">
-                      <img src="./images/django.jpg" class="img-fluid">
+                      <img src="./images/django.jpg" class="img-fluid" alt="Django">
                   </div>
                   <div class="col-md-6 col-lg-3 bg-black text-white d-flex justify-content-center align-items-center h-300">
                       <p class="modal_text">Django</p>
                   </div>
                   <div  class="col-md-6 col-lg-3 p-0">
-                    <img src="./images/drf.jpg" class="img-fluid">
+                    <img src="./images/drf.jpg" class="img-fluid" alt="DRF">
                   </div>
                   <div  class="col-md-6 col-lg-3 bg-black text-white d-flex justify-content-center align-items-center  h-300">
                       <p class="modal_text">Django rest framework</p>
@@ -96,13 +93,13 @@
                       <p class="modal_text">React</p>
                   </div>
                   <div  class="col-md-6 col-lg-3 p-0">
-                      <img src="./images/react.jpg" class="img-fluid">
+                      <img src="./images/react.jpg" class="img-fluid" alt="React">
                   </div>
                   <div class="col-md-6 col-lg-3 bg-black text-white d-flex justify-content-center align-items-center h-300">
                       <p class="modal_text">PostgreSQL</p>
                   </div>
                   <div  class="col-md-6 col-lg-3 p-0">
-                      <img src="./images/postgresql.jpg" class="img-fluid">
+                      <img src="./images/postgresql.jpg" class="img-fluid" alt="PostgreSQL">
                   </div>
           </div>
         </section>
@@ -117,15 +114,15 @@
                   <form>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" wfd-id="id0" placeholder="Введите адрес электронной почты">
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите адрес электронной почты">
                       <div id="emailHelp" class="form-text">Мы не передаем введенные данные третьим лицам.</div>
                     </div>
                     <div class="mb-3">
-                      <label for="InputName" class="form-label">Имя</label>
-                      <input type="password" class="form-control" id="exampleInputName1" wfd-id="id1" placeholder="Введите имя" >
+                      <label for="full_name" class="form-label">Имя</label>
+                      <input id="full_name" type="text" class="form-control" placeholder="Введите имя" >
                     </div>
                     <div class="mb-3">
-                      <label for="textarea" class="form-label">Сообщение</label>
+                      <label for="floatingTextarea" class="form-label">Сообщение</label>
                       <textarea class='form-control' name="massage" id="floatingTextarea" cols="10" rows="10" placeholder="Введите сообщение"></textarea>
                     </div>
                     <div class="text-center">
