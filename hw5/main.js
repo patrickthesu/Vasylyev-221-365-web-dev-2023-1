@@ -9,7 +9,8 @@ function createItem(value){
     const list = document.querySelector(`#${value.status}-list`);
     const item = document.getElementById('task-template').cloneNode(true);
     item.querySelector('.task-name').textContent = value.name ? value.name : 'No name';
-    item.dataset.id=value.id
+    item.dataset.id=value.id;
+    item.dataset.status=value.status;
     item.querySelector('.task-description').textContent = value.desc;
     item.classList.remove('d-none');
     list.append(item);
@@ -47,16 +48,18 @@ function editModal(event){
     let name = task.querySelector('.task-name').textContent;
     let description = task.querySelector('.task-description').textContent;
     let id = task.dataset.id;
-    let status = event.target.closest('.list-group li');
+    let status = task.dataset.status;
     event.target.querySelector('#editNameTask').value = name;
     event.target.querySelector('#editTextTask').value = description;
     const btn = event.target.querySelector('#save');
     btn.addEventListener('click', function(event) { 
+        name = document.getElementById('editNameTask').value
+        description = document.getElementById('editTextTask').value
         //const item = JSON.parse(localStorage.getItem(id));
-        //item.name = document.getElementById('editNameTask').value;
-        //item.description = document.getElementById('editTextTask').value;
+        //item.name = name;
+        //item.description = description;
         //localStorage.setItem(id, JSON.stringify(item));
-        editTask(id, name, description, status) 
+        editTask(id, name, description, status);
         //task.querySelector('.task-name').textContent = item.name;
         //task.querySelector('.task-description').textContent = item.desc;
     });
@@ -77,6 +80,14 @@ function removeModal(event){
         document.querySelector((`[data-id="${id}"]`)).remove();
         
     });
+}
+
+function clearTasksLists() {
+    const lists = [...document.querySelectorAll('.list-group')]
+
+    lists.map(list => [...list.children].map(
+        child => !child.classList.contains('d-none') ? child.remove() : null
+    ))
 }
 
 async function deleteTask(id) {
@@ -112,11 +123,9 @@ async function createTask(name, description, status) {
         .then(response => response.json())
         .then(data => createItem(data))
         .catch(error => console.log('error', error));
-
 }
 
 async function editTask(id, name, description, status) {
-    console.log(id)
     const formData = new FormData();
     formData.append("name", name);
     formData.append("desc", description);
@@ -139,7 +148,10 @@ async function editTask(id, name, description, status) {
 async function getTasks() {
     await fetch(`${HOST}/api/tasks?api_key=${API_KEY}`)
         .then(response => response.json())
-        .then(data => data.tasks.map(item=>createItem(item)));
+        .then(data => {
+            clearTasksLists()
+            data.tasks.map(item=>createItem(item))
+        });
 }
 
 window.onload = function () { 
