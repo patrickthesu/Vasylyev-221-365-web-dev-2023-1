@@ -102,6 +102,8 @@ async function deleteTask(id) {
         requestOptions
     )
         .catch(error => console.log('error', error));
+
+    getTasks();
 }
 
 async function createTask(name, description, status) {
@@ -123,6 +125,8 @@ async function createTask(name, description, status) {
         .then(response => response.json())
         .then(data => createItem(data))
         .catch(error => console.log('error', error));
+
+    getTasks();
 }
 
 async function editTask(id, name, description, status) {
@@ -143,6 +147,8 @@ async function editTask(id, name, description, status) {
     )
         .then(response => console.log(response.json()))
         .catch(error => console.log('error', error));
+
+    getTasks();
 }
 
 async function getTasks() {
