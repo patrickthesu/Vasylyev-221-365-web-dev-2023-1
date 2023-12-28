@@ -47,18 +47,19 @@ function editModal(event){
     let name = task.querySelector('.task-name').textContent;
     let description = task.querySelector('.task-description').textContent;
     let id = task.dataset.id;
+    let status = event.target.closest('.list-group li');
     event.target.querySelector('#editNameTask').value = name;
     event.target.querySelector('#editTextTask').value = description;
     const btn = event.target.querySelector('#save');
-    btn.addEventListener('click', function(event) {
-        const modal = event.target.closest('#editModal');
-        const item = JSON.parse(localStorage.getItem(id));
-        item.name = modal.querySelector('#editNameTask').value;
-        item.description = modal.querySelector('#editTextTask').value;
-        localStorage.setItem(id, JSON.stringify(item));
-        task.querySelector('.task-name').textContent = item.name;
-        task.querySelector('.task-description').textContent = item.desc;
-    });  
+    btn.addEventListener('click', function(event) { 
+        //const item = JSON.parse(localStorage.getItem(id));
+        //item.name = document.getElementById('editNameTask').value;
+        //item.description = document.getElementById('editTextTask').value;
+        //localStorage.setItem(id, JSON.stringify(item));
+        editTask(id, name, description, status) 
+        //task.querySelector('.task-name').textContent = item.name;
+        //task.querySelector('.task-description').textContent = item.desc;
+    });
 }
 
 const showRemoveModal = document.querySelector('#removeModal');
@@ -79,7 +80,7 @@ function removeModal(event){
 }
 
 async function deleteTask(id) {
-    console.log(id)
+    console.log(`DELETING ${id}`)
     const requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
@@ -112,6 +113,27 @@ async function createTask(name, description, status) {
         .then(data => createItem(data))
         .catch(error => console.log('error', error));
 
+}
+
+async function editTask(id, name, description, status) {
+    console.log(id)
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("desc", description);
+    formData.append("status", status);
+
+    const requestOptions = {
+        method: 'PUT',
+        body: formData,
+        redirect: 'follow'
+    };
+
+    fetch(
+        `${HOST}/api/tasks/${id}?api_key=${API_KEY}`,
+        requestOptions
+    )
+        .then(response => console.log(response.json()))
+        .catch(error => console.log('error', error));
 }
 
 async function getTasks() {
