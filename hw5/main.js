@@ -145,7 +145,7 @@ async function editTask(id, name, description, status) {
         `${HOST}/api/tasks/${id}?api_key=${API_KEY}`,
         requestOptions
     )
-        .then(response => console.log(response.json()))
+        .then(response => getTasks())
         .catch(error => console.log('error', error));
 
     getTasks();
