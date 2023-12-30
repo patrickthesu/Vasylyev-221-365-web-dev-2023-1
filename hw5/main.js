@@ -22,10 +22,7 @@ btn.addEventListener('click', function(event){
     let description = modal.querySelector('#textTask').value;
     let status = modal.querySelector('#select').value;
 
-    localStorage.setItem(`task-${localStorage.length+1}`,JSON.stringify({name, description, status}));
     createTask(name, description, status);
-
-    //createItem({id:`task-${localStorage.length+1}`,name, description, status})
 });
 
 const showShowModal = document.querySelector('#showModal');
@@ -55,13 +52,7 @@ function editModal(event){
     btn.addEventListener('click', function(event) { 
         name = document.getElementById('editNameTask').value
         description = document.getElementById('editTextTask').value
-        //const item = JSON.parse(localStorage.getItem(id));
-        //item.name = name;
-        //item.description = description;
-        //localStorage.setItem(id, JSON.stringify(item));
         editTask(id, name, description, status);
-        //task.querySelector('.task-name').textContent = item.name;
-        //task.querySelector('.task-description').textContent = item.desc;
     });
 }
 
@@ -75,7 +66,6 @@ function removeModal(event){
     event.target.querySelector('#removeNameTask').textContent= name;
     const btn = event.target.querySelector('#removeModalBtn');
     btn.addEventListener('click', function(event) {
-        localStorage.removeItem(id);
         deleteTask(id);
         document.querySelector((`[data-id="${id}"]`)).remove();
         
@@ -161,12 +151,5 @@ async function getTasks() {
 }
 
 window.onload = function () { 
-    for (let i = 0; i < localStorage.length; ++i) {
-        let key = localStorage.key(i);
-        if (key.startsWith('task')) {
-            const value = JSON.parse(localStorage.getItem(key));
-            createItem({id:key,...value});
-        }
-    }
     getTasks();
 };
