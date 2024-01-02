@@ -1,7 +1,7 @@
 'use strict';
 
 const API_KEY = '50d2199a-42dc-447d-81ed-d68a443b697e'
-const HOST = 'http://tasks-api.std-900.ist.mospolytech.ru/'
+const HOST = 'http://tasks-api.std-900.ist.mospolytech.ru'
 
 let btn = document.querySelector('#create');
 
@@ -22,10 +22,7 @@ btn.addEventListener('click', function(event){
     let description = modal.querySelector('#textTask').value;
     let status = modal.querySelector('#select').value;
 
-    localStorage.setItem(`task-${localStorage.length+1}`,JSON.stringify({name, description, status}));
     createTask(name, description, status);
-
-    //createItem({id:`task-${localStorage.length+1}`,name, description, status})
 });
 
 const showShowModal = document.querySelector('#showModal');
@@ -55,15 +52,29 @@ function editModal(event){
     btn.addEventListener('click', function(event) { 
         name = document.getElementById('editNameTask').value
         description = document.getElementById('editTextTask').value
-        //const item = JSON.parse(localStorage.getItem(id));
-        //item.name = name;
-        //item.description = description;
-        //localStorage.setItem(id, JSON.stringify(item));
         editTask(id, name, description, status);
-        //task.querySelector('.task-name').textContent = item.name;
-        //task.querySelector('.task-description').textContent = item.desc;
     });
 }
+
+const moveRight = document.querySelector('.move-done');
+moveRight.addEventListener('show.bs.modal', event => {
+    let task = event.relatedTarget.closest('#task-template');
+    let name = task.querySelector('.task-name').textContent;
+    let description = task.querySelector('.task-description').textContent;
+    let id = task.dataset.id;
+    let status = task.dataset.status;
+    editTask(id, name, description, 'done');
+});
+
+const moveLeft = document.querySelector('.move-to-do');
+moveLeft.addEventListener('show.bs.modal', event => {
+    let task = event.relatedTarget.closest('#task-template');
+    let name = task.querySelector('.task-name').textContent;
+    let description = task.querySelector('.task-description').textContent;
+    let id = task.dataset.id;
+    let status = task.dataset.status;
+    editTask(id, name, description, 'done');
+});
 
 const showRemoveModal = document.querySelector('#removeModal');
 showRemoveModal.addEventListener('show.bs.modal',removeModal)
@@ -75,7 +86,6 @@ function removeModal(event){
     event.target.querySelector('#removeNameTask').textContent= name;
     const btn = event.target.querySelector('#removeModalBtn');
     btn.addEventListener('click', function(event) {
-        localStorage.removeItem(id);
         deleteTask(id);
         document.querySelector((`[data-id="${id}"]`)).remove();
         
@@ -91,19 +101,17 @@ function clearTasksLists() {
 }
 
 async function deleteTask(id) {
-    console.log(`DELETING ${id}`)
     const requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
     };
 
-    fetch(
+    await fetch(
         `${HOST}/api/tasks/${id}?api_key=${API_KEY}`,
         requestOptions
     )
         .catch(error => console.log('error', error));
-
-    getTasks();
+    await getTasks()
 }
 
 async function createTask(name, description, status) {
@@ -118,7 +126,7 @@ async function createTask(name, description, status) {
         redirect: 'follow'
     };
 
-    fetch(
+    await fetch(
         `${HOST}/api/tasks?api_key=${API_KEY}`,
         requestOptions
     )
@@ -145,7 +153,7 @@ async function editTask(id, name, description, status) {
         `${HOST}/api/tasks/${id}?api_key=${API_KEY}`,
         requestOptions
     )
-        .then(response => console.log(response.json()))
+        .then(response => getTasks())
         .catch(error => console.log('error', error));
 
     getTasks();
@@ -161,12 +169,5 @@ async function getTasks() {
 }
 
 window.onload = function () { 
-    for (let i = 0; i < localStorage.length; ++i) {
-        let key = localStorage.key(i);
-        if (key.startsWith('task')) {
-            const value = JSON.parse(localStorage.getItem(key));
-            createItem({id:key,...value});
-        }
-    }
     getTasks();
 };

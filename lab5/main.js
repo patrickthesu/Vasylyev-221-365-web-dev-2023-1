@@ -127,8 +127,12 @@ function pageBtnHandler(event) {
     }
 }
 
-function search () { 
-    downloadData(page = 1,);
+function search () {
+    const searchField = document.querySelector('.search-field');
+    searchField.value = searchField.value.trim();
+    if (searchField.value === '') return downloadData();
+    downloadData(page = 1, query = searchField.value);
+
     window.scrollTo(0, 0);
 }
 
@@ -153,17 +157,16 @@ function autocomplete(event, arr) {
         item.innerHTML = "<strong>" + phrase.substr(
             0, value.length) + "</strong>";
         item.innerHTML += phrase.substr(value.length);
-        item.innerHTML += "<input type='hidden' value='" + phrase + "'>";
         item.addEventListener("click", function(e) {
             event.target.value = phrase;
             clearAllListItems(e);
         });
-        autocompleteList.appendChild(item);
+        autocompleteList.append(item);
     }
 }
 
 function getAutocompleteItems(event) {
-    query = event.target.value.trim();
+    let query = event.target.value.trim();
     if (query === '') return;
 
     let url = new URL(
@@ -177,14 +180,14 @@ function getAutocompleteItems(event) {
     xhr.onload = function () {
         autocomplete(event, this.response);
     };
-    xhr.send();   
+    xhr.send();
 }
 
 window.onload = function () {
     downloadData();
 
     document.querySelector('.search-field').addEventListener(
-        "input", 
+        "input",
         getAutocompleteItems
     );
 
