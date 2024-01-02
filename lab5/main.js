@@ -177,8 +177,7 @@ function getAutocompleteItems(event) {
     xhr.onload = function () {
         autocomplete(event, this.response);
     };
-    xhr.send();
-   
+    xhr.send();   
 }
 
 window.onload = function () {
