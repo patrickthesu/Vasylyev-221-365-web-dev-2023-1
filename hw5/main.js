@@ -1,7 +1,7 @@
 'use strict';
 
 const API_KEY = '50d2199a-42dc-447d-81ed-d68a443b697e'
-const HOST = 'http://tasks-api.std-900.ist.mospolytech.ru/'
+const HOST = 'http://tasks-api.std-900.ist.mospolytech.ru'
 
 let btn = document.querySelector('#create');
 
@@ -56,6 +56,26 @@ function editModal(event){
     });
 }
 
+const moveRight = document.querySelector('.move-done');
+moveRight.addEventListener('show.bs.modal', event => {
+    let task = event.relatedTarget.closest('#task-template');
+    let name = task.querySelector('.task-name').textContent;
+    let description = task.querySelector('.task-description').textContent;
+    let id = task.dataset.id;
+    let status = task.dataset.status;
+    editTask(id, name, description, 'done');
+});
+
+const moveLeft = document.querySelector('.move-to-do');
+moveLeft.addEventListener('show.bs.modal', event => {
+    let task = event.relatedTarget.closest('#task-template');
+    let name = task.querySelector('.task-name').textContent;
+    let description = task.querySelector('.task-description').textContent;
+    let id = task.dataset.id;
+    let status = task.dataset.status;
+    editTask(id, name, description, 'done');
+});
+
 const showRemoveModal = document.querySelector('#removeModal');
 showRemoveModal.addEventListener('show.bs.modal',removeModal)
 
@@ -81,19 +101,17 @@ function clearTasksLists() {
 }
 
 async function deleteTask(id) {
-    console.log(`DELETING ${id}`)
     const requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
     };
 
-    fetch(
+    await fetch(
         `${HOST}/api/tasks/${id}?api_key=${API_KEY}`,
         requestOptions
     )
         .catch(error => console.log('error', error));
-
-    getTasks();
+    await getTasks()
 }
 
 async function createTask(name, description, status) {
@@ -108,7 +126,7 @@ async function createTask(name, description, status) {
         redirect: 'follow'
     };
 
-    fetch(
+    await fetch(
         `${HOST}/api/tasks?api_key=${API_KEY}`,
         requestOptions
     )
